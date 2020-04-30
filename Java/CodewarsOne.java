@@ -8,6 +8,9 @@ public class CodewarsOne {
         System.out.println(validPhoneNumber("(1111)555 2345"));
         System.out.println(validPhoneNumber("(098) 123 4567"));
 
+
+        System.out.println(presses("LOL"));
+
     }
 
 
@@ -81,5 +84,28 @@ public class CodewarsOne {
 //
 //    Hint: While it wouldn't take too long to hard code the amount of keypresses for all 26 letters by hand, try to avoid doing so! (Imagine you work at a phone manufacturer who might be testing out different keyboard layouts, and you want to be able to test new ones rapidly.)
 
+    private final static char[][] keys = {
+            {'1'}, {'A', 'B', 'C', '2'}, {'D', 'E', 'F', '3'},
+            {'G', 'H', 'I', '4'}, {'J', 'K', 'L', '5'}, {'M', 'N', 'O', '6'},
+            {'P', 'Q', 'R', 'S', '7'}, {'T', 'U', 'V', '8'}, {'W', 'X', 'Y', 'Z', '9'},
+            {'*'}, {' ', '0'}, {'#'},
+    };
 
+    public static int presses(String phrase) {
+        int presses = 0;
+        phrase:
+        for (final char letter : phrase.toCharArray()) {
+            final char upperLetter = Character.toUpperCase(letter);
+            for (final char[] key : keys) {
+                for (int i = 0; i < key.length; i++) {
+                    if (upperLetter == key[i]) {
+                        presses += i + 1;
+                        continue phrase;
+                    }
+                }
+            }
+        }
+        return presses;
+
+    }
 }
