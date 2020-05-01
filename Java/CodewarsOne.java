@@ -108,4 +108,17 @@ public class CodewarsOne {
         return presses;
 
     }
+
+    // TODO: Problem 1
+// Return true if the given string begins with "mix", except the 'm' can be anything, so "pix", "9ix" .. all count.
+
+    public static boolean mixStart(String str) {
+        if (str.length() < 3) return false;
+        String two = str.substring(1, 3);
+        if (two.equals("ix")) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }
